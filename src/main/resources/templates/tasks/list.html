@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html >
+<head>
+	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Listado</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div th:replace="fragments/nav::#my-nav"></div>
+	<div class="container">
+	 	<h1 class="text-muted text-center mt-5">List tasks</h1>
+		<table class="table table-hover mt-5 table-bordered">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Title</th>
+		      <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="task : ${tasks}">
+		      <td th:text="${task.title}"></td>
+		      <td sec:authorize="hasRole('ROLE_ADMIN')">
+		      	<a th:href="@{/tasks/find/}+${task.id}" type="submit" class="btn btn-primary">Show</a>
+		      	<a th:href="@{/tasks/remove/}+${task.id}" type="submit" class="btn btn-danger">Remove</a>
+		      </td>
+		    </tr>
+		   
+		  </tbody>
+		</table>
+		<a href="/tasks">New task</a>
+	
+	</div>
+</body>
+</html>

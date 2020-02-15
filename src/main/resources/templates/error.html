@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Error 500</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"></link>
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center">Error</h1>
+		<p class="text-center text-muted"><span th:text="${error}"></span><span th:text="${status}"></span></p>
+	</div>
+</body>
+</html>
